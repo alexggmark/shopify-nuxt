@@ -2,14 +2,13 @@ import path from 'path'
 import fs from 'fs'
 
 const isDev = process.env.NODE_ENV !== 'production'
-const serverConfig = isDev ? {
-  key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
-  cert: fs.readFileSync(path.resolve(__dirname, 'server.cert'))
-} : {}
 
 export default {
   server: {
-    https: serverConfig
+    https: isDev ? {
+      key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'server.cert'))
+    } : {}
   },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
