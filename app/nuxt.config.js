@@ -7,9 +7,6 @@ const serverConfig = isDev ? {
   cert: fs.readFileSync(path.resolve(__dirname, 'server.cert'))
 } : {}
 
-console.log(`isDev: ${isDev}`)
-console.log(`serverConfig: ${serverConfig}`)
-
 export default {
   server: {
     https: serverConfig
