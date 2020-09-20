@@ -23,12 +23,26 @@
           GitHub
         </a>
       </div>
+      <TestComp :products="products" />
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import testQuery from '@/graphql/shopify/queries/testQuery'
+
+export default {
+  async asyncData ({ app }) {
+    const client = await app.apolloProvider.clients.shopify.query(
+      {
+        query: testQuery
+      }
+    )
+    return {
+      products: client.data.products.edges
+    }
+  },
+}
 </script>
 
 <style>

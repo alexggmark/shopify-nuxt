@@ -1,0 +1,46 @@
+fragment ProductFragment on Product {
+  createdAt
+  updatedAt
+  descriptionHtml
+  description
+  handle
+  productType
+  title
+  vendor
+  publishedAt
+  onlineStoreUrl
+  images(first: 250) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        lqipSrc: transformedSrc(
+          maxWidth: 1
+          maxHeight: 1
+        )
+        tinySrc: transformedSrc(
+          maxWidth: 420
+          maxHeight: 420
+        )
+        smallSrc: transformedSrc(
+          maxWidth: 768
+          maxHeight: 768
+        )
+        mediumSrc: transformedSrc(
+          maxWidth: 960
+          maxHeight: 960
+        )
+        largeSrc: transformedSrc(
+          maxWidth: 1280
+          maxHeight: 1280
+        )
+        originalSrc
+        altText
+      }
+    }
+  }
+}

@@ -10,7 +10,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nuxtjs/apollo": "^4.0.1-rc.3",
     "core-js": "^3.6.5",
+    "fs": "0.0.1-security",
+    "graphql-tag": "^2.11.0",
     "nuxt": "^2.14.5"
   },
   "devDependencies": {

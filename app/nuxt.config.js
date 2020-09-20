@@ -29,22 +29,49 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    // '~/plugins/apollo.js'
   ],
+
+  // Apollo configuration for GraphQL endpoints
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:4000'
+      },
+      shopify: '~/plugins/shopify/client.js',
+      test: {
+        httpEndpoint: 'https://countries-274616.ew.r.appspot.com/'
+      }
+    },
+    errorPolicy: 'ignore',
+    includeNodeModules: true
+  },
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-    // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    '@nuxtjs/apollo'
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    extend (config, ctx) {
+      config.node = {
+        fs: 'empty'
+      }
+    }
+  },
+
+  env: {
+    STORE_NAME: process.env.STORE_NAME,
+    STORE_ACCESS_TOKEN: process.env.STORE_ACCESS_TOKEN,
+    STORE_API_VERSION: process.env.STORE_API_VERSION
   }
 }

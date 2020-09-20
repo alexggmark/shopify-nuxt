@@ -1,0 +1,11 @@
+#import "@/graphql/shopify/fragments/ProductFragment.gql"
+
+query	{
+  products(first: 18) {
+    edges {
+      node {
+        ...ProductFragment
+      }
+    }
+  }
+}
